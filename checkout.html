@@ -1,0 +1,1238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="DRESIA Premium Fashion Checkout"
+    >
+
+    <title>Checkout | DRESIA</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =================================
+           CHECKOUT PREMIUM PAGE
+        ================================= */
+
+        .checkout-page {
+            min-height: 100vh;
+            background: #050505;
+        }
+
+        .checkout-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(5,5,5,0.96);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(212,175,55,0.25);
+        }
+
+        .checkout-header-inner {
+            max-width: 1300px;
+            margin: auto;
+
+            padding: 20px 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .checkout-logo {
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 6px;
+
+            background: linear-gradient(
+                90deg,
+                #a77b22,
+                #fff0aa,
+                #d4af37
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .checkout-header-inner a {
+            color: #d4af37;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .checkout-container {
+            max-width: 1200px;
+            margin: 60px auto;
+
+            padding: 0 25px 70px;
+        }
+
+        .checkout-heading {
+            margin-bottom: 40px;
+        }
+
+        .checkout-heading span {
+            color: #d4af37;
+            font-size: 10px;
+            letter-spacing: 4px;
+        }
+
+        .checkout-heading h1 {
+            margin-top: 10px;
+
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: 2px;
+        }
+
+        .checkout-heading p {
+            color: #888;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .checkout-grid {
+            display: grid;
+
+            grid-template-columns: 1.15fr 0.85fr;
+
+            gap: 35px;
+            align-items: start;
+        }
+
+        .checkout-form,
+        .checkout-summary {
+            background: #0b0b0b;
+
+            border: 1px solid #262626;
+            border-radius: 10px;
+
+            padding: 30px;
+        }
+
+        .checkout-form h2,
+        .checkout-summary h2 {
+            color: #d4af37;
+
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .checkout-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .checkout-form label {
+            display: block;
+
+            color: #aaa;
+            font-size: 12px;
+
+            margin-bottom: 8px;
+        }
+
+        .checkout-form input,
+        .checkout-form select,
+        .checkout-form textarea {
+            width: 100%;
+
+            padding: 14px;
+
+            background: #151515;
+
+            border: 1px solid #303030;
+            border-radius: 5px;
+
+            color: #fff;
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        .checkout-form input:focus,
+        .checkout-form select:focus,
+        .checkout-form textarea:focus {
+            border-color: #d4af37;
+        }
+
+        .checkout-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkout-form select option {
+            background: #111;
+            color: white;
+        }
+
+        .checkout-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 16px;
+
+            background: #17130d;
+
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+
+            color: #d4af37;
+            font-size: 13px;
+        }
+
+        .payment-option input {
+            width: auto;
+            accent-color: #d4af37;
+        }
+
+        .checkout-product {
+            display: flex;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 18px 0;
+
+            border-bottom: 1px solid #252525;
+        }
+
+        .checkout-product-info {
+            flex: 1;
+        }
+
+        .checkout-product-info h4 {
+            font-size: 13px;
+        }
+
+        .checkout-product-info p {
+            color: #888;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .checkout-product-price {
+            color: #d4af37;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .checkout-quantity {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 10px;
+        }
+
+        .checkout-quantity button {
+            width: 25px;
+            height: 25px;
+
+            background: #171717;
+
+            border: 1px solid #333;
+            color: #d4af37;
+        }
+
+        .checkout-quantity span {
+            font-size: 12px;
+        }
+
+        .checkout-remove {
+            display: block;
+
+            background: none;
+            border: none;
+
+            color: #777;
+            font-size: 10px;
+
+            margin-top: 10px;
+        }
+
+        .checkout-remove:hover {
+            color: #ff5555;
+        }
+
+        .checkout-empty {
+            text-align: center;
+            padding: 30px 0;
+            color: #888;
+        }
+
+        .checkout-empty a {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            color: #d4af37;
+        }
+
+        .checkout-summary-lines {
+            margin-top: 20px;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 12px 0;
+
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .summary-line.total {
+            border-top: 1px solid #333;
+
+            margin-top: 10px;
+            padding-top: 20px;
+
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .summary-line.total span:last-child {
+            color: #d4af37;
+        }
+
+        .checkout-note {
+            margin: 15px 0 25px;
+
+            color: #777;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 17px;
+
+            background: linear-gradient(
+                135deg,
+                #f8e4a0,
+                #d4af37,
+                #a87816
+            );
+
+            border: none;
+            border-radius: 5px;
+
+            color: #000;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .place-order-btn:hover {
+            box-shadow: 0 0 25px rgba(212,175,55,0.25);
+        }
+
+        .place-order-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .checkout-message {
+            margin-top: 15px;
+
+            color: #d4af37;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .checkout-footer {
+            text-align: center;
+
+            padding: 30px 15px;
+
+            border-top: 1px solid #222;
+
+            color: #777;
+            font-size: 11px;
+        }
+
+        .secure-note {
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #666;
+            font-size: 11px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-summary {
+                order: -1;
+            }
+
+            .checkout-container {
+                margin: 35px auto;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .checkout-header-inner {
+                padding: 16px 20px;
+            }
+
+            .checkout-logo {
+                font-size: 20px;
+                letter-spacing: 4px;
+            }
+
+            .checkout-container {
+                padding: 0 15px 50px;
+            }
+
+            .checkout-form,
+            .checkout-summary {
+                padding: 20px;
+            }
+
+            .checkout-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .checkout-heading h1 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="checkout-page">
+
+
+<!-- =================================
+     HEADER
+================================= -->
+
+<header class="checkout-header">
+
+    <div class="checkout-header-inner">
+
+        <a href="index.html" class="checkout-logo">
+            DRESIA
+        </a>
+
+        <a href="index.html">
+            ← CONTINUE SHOPPING
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =================================
+     CHECKOUT MAIN
+================================= -->
+
+<main class="checkout-container">
+
+    <div class="checkout-heading">
+
+        <span>YOUR ORDER</span>
+
+        <h1>CHECKOUT</h1>
+
+        <p>
+            Complete your details to place your DRESIA order.
+        </p>
+
+    </div>
+
+
+    <div class="checkout-grid">
+
+
+        <!-- CUSTOMER FORM -->
+
+        <form
+            id="checkout-form"
+            class="checkout-form"
+        >
+
+            <h2>Delivery Information</h2>
+
+
+            <div class="form-group">
+
+                <label for="customer-name">
+                    Full Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="customer-name"
+                    name="customerName"
+                    placeholder="Enter your full name"
+                    required
+                    autocomplete="name"
+                >
+
+            </div>
+
+
+            <div class="checkout-row">
+
+                <div class="form-group">
+
+                    <label for="customer-phone">
+                        Phone Number *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customer-phone"
+                        name="phone"
+                        placeholder="01XXXXXXXXX"
+                        required
+                        autocomplete="tel"
+                        pattern="01[3-9][0-9]{8}"
+                        maxlength="11"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customer-email">
+                        Email (Optional)
+                    </label>
+
+                    <input
+                        type="email"
+                        id="customer-email"
+                        name="email"
+                        placeholder="your@email.com"
+                        autocomplete="email"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customer-district">
+                    Delivery District *
+                </label>
+
+                <select
+                    id="customer-district"
+                    name="district"
+                    required
+                >
+
+                    <option value="">
+                        Select your district
+                    </option>
+
+                    <option value="Dhaka">
+                        Dhaka
+                    </option>
+
+                    <option value="Outside Dhaka">
+                        Outside Dhaka
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customer-address">
+                    Full Address *
+                </label>
+
+                <textarea
+                    id="customer-address"
+                    name="address"
+                    placeholder="House, Road, Area, City"
+                    required
+                    autocomplete="street-address"
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customer-note">
+                    Order Note (Optional)
+                </label>
+
+                <textarea
+                    id="customer-note"
+                    name="note"
+                    placeholder="Any special delivery instructions..."
+                ></textarea>
+
+            </div>
+
+
+            <h2 style="margin-top:30px;">
+                Payment Method
+            </h2>
+
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="COD"
+                    checked
+                >
+
+                Cash on Delivery (COD)
+
+            </label>
+
+
+            <p class="checkout-note">
+                Pay cash when your order arrives.
+                Online payment is not available in this demo.
+            </p>
+
+        </form>
+
+
+        <!-- ORDER SUMMARY -->
+
+        <div class="checkout-summary">
+
+            <h2>Order Summary</h2>
+
+
+            <div id="checkout-items">
+
+                <p class="checkout-empty">
+                    Loading products...
+                </p>
+
+            </div>
+
+
+            <div class="checkout-summary-lines">
+
+                <div class="summary-line">
+
+                    <span>Subtotal</span>
+
+                    <span id="checkout-subtotal">
+                        ৳0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-line">
+
+                    <span>Delivery Charge</span>
+
+                    <span id="checkout-delivery">
+                        ৳0
+                    </span>
+
+                </div>
+
+
+                <div class="summary-line total">
+
+                    <span>Total</span>
+
+                    <span id="checkout-total">
+                        ৳0
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="checkout-note">
+
+                Dhaka Delivery: ৳60<br>
+                Outside Dhaka Delivery: ৳120
+
+            </p>
+
+
+            <button
+                type="submit"
+                form="checkout-form"
+                id="place-order-btn"
+                class="place-order-btn"
+            >
+
+                PLACE ORDER
+
+            </button>
+
+
+            <div
+                id="checkout-message"
+                class="checkout-message"
+                aria-live="polite"
+            ></div>
+
+
+            <p class="secure-note">
+                ✦ DRESIA PREMIUM FASHION ✦
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer class="checkout-footer">
+
+    © <span id="checkout-year"></span>
+    DRESIA — WEAR YOUR IDENTITY.
+
+</footer>
+
+
+<!-- =================================
+     CHECKOUT JAVASCRIPT
+================================= -->
+
+<script>
+
+(function () {
+
+    "use strict";
+
+
+    /* =================================
+       1. STORAGE
+    ================================= */
+
+    const CART_KEY = "dresia_cart";
+
+    const DELIVERY_DHAKA = 60;
+    const DELIVERY_OUTSIDE = 120;
+
+    let cart = [];
+
+    try {
+
+        cart = JSON.parse(
+            localStorage.getItem(CART_KEY)
+        ) || [];
+
+        if (!Array.isArray(cart)) {
+            cart = [];
+        }
+
+    } catch (error) {
+
+        cart = [];
+
+    }
+
+
+    /* =================================
+       2. ELEMENTS
+    ================================= */
+
+    const checkoutItems =
+        document.getElementById("checkout-items");
+
+    const subtotalElement =
+        document.getElementById("checkout-subtotal");
+
+    const deliveryElement =
+        document.getElementById("checkout-delivery");
+
+    const totalElement =
+        document.getElementById("checkout-total");
+
+    const districtElement =
+        document.getElementById("customer-district");
+
+    const checkoutForm =
+        document.getElementById("checkout-form");
+
+    const orderButton =
+        document.getElementById("place-order-btn");
+
+    const messageElement =
+        document.getElementById("checkout-message");
+
+
+    /* =================================
+       3. HELPERS
+    ================================= */
+
+    function formatPrice(price) {
+
+        return "৳" + Number(price).toLocaleString("en-BD");
+
+    }
+
+
+    function escapeHTML(value) {
+
+        return String(value).replace(/[&<>"']/g, character => ({
+
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+
+        })[character]);
+
+    }
+
+
+    function saveCart() {
+
+        localStorage.setItem(
+            CART_KEY,
+            JSON.stringify(cart)
+        );
+
+    }
+
+
+    function getSubtotal() {
+
+        return cart.reduce((sum, item) => {
+
+            return sum +
+                Number(item.price) *
+                Number(item.quantity);
+
+        }, 0);
+
+    }
+
+
+    function getDeliveryCharge() {
+
+        if (cart.length === 0) {
+            return 0;
+        }
+
+        return districtElement.value === "Dhaka"
+            ? DELIVERY_DHAKA
+            : DELIVERY_OUTSIDE;
+
+    }
+
+
+    function getTotal() {
+
+        return getSubtotal() + getDeliveryCharge();
+
+    }
+
+
+    /* =================================
+       4. RENDER ORDER SUMMARY
+    ================================= */
+
+    function renderCheckout() {
+
+        if (!cart.length) {
+
+            checkoutItems.innerHTML = `
+
+                <div class="checkout-empty">
+
+                    Your bag is empty.
+
+                    <br>
+
+                    <a href="index.html">
+                        Continue Shopping →
+                    </a>
+
+                </div>
+
+            `;
+
+            subtotalElement.textContent =
+                formatPrice(0);
+
+            deliveryElement.textContent =
+                formatPrice(0);
+
+            totalElement.textContent =
+                formatPrice(0);
+
+            orderButton.disabled = true;
+
+            return;
+
+        }
+
+
+        orderButton.disabled = false;
+
+
+        checkoutItems.innerHTML = cart.map(item => `
+
+            <div class="checkout-product">
+
+                <div class="checkout-product-info">
+
+                    <h4>
+                        ${escapeHTML(item.name)}
+                    </h4>
+
+                    <p>
+                        ${formatPrice(item.price)} each
+                    </p>
+
+                    <div class="checkout-quantity">
+
+                        <button
+                            type="button"
+                            data-qty="-1"
+                            data-id="${escapeHTML(item.id)}"
+                            aria-label="Decrease quantity">
+                            −
+                        </button>
+
+                        <span>
+                            ${Number(item.quantity)}
+                        </span>
+
+                        <button
+                            type="button"
+                            data-qty="1"
+                            data-id="${escapeHTML(item.id)}"
+                            aria-label="Increase quantity">
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="checkout-remove"
+                        data-remove="${escapeHTML(item.id)}">
+
+                        REMOVE
+
+                    </button>
+
+                </div>
+
+                <div class="checkout-product-price">
+
+                    ${formatPrice(
+                        Number(item.price) *
+                        Number(item.quantity)
+                    )}
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+
+        subtotalElement.textContent =
+            formatPrice(getSubtotal());
+
+        deliveryElement.textContent =
+            formatPrice(getDeliveryCharge());
+
+        totalElement.textContent =
+            formatPrice(getTotal());
+
+    }
+
+
+    /* =================================
+       5. DISTRICT CHANGE
+    ================================= */
+
+    districtElement.addEventListener(
+        "change",
+        renderCheckout
+    );
+
+
+    /* =================================
+       6. QUANTITY & REMOVE
+    ================================= */
+
+    checkoutItems.addEventListener(
+        "click",
+        function (event) {
+
+            const quantityButton =
+                event.target.closest("[data-qty]");
+
+            const removeButton =
+                event.target.closest("[data-remove]");
+
+
+            if (quantityButton) {
+
+                const id =
+                    quantityButton.dataset.id;
+
+                const change =
+                    Number(quantityButton.dataset.qty);
+
+                const item = cart.find(
+                    product => product.id === id
+                );
+
+                if (item) {
+
+                    item.quantity += change;
+
+                    if (item.quantity <= 0) {
+
+                        cart = cart.filter(
+                            product => product.id !== id
+                        );
+
+                    }
+
+                }
+
+                saveCart();
+
+                renderCheckout();
+
+            }
+
+
+            if (removeButton) {
+
+                const id =
+                    removeButton.dataset.remove;
+
+                cart = cart.filter(
+                    item => item.id !== id
+                );
+
+                saveCart();
+
+                renderCheckout();
+
+            }
+
+        }
+    );
+
+
+    /* =================================
+       7. PLACE ORDER DEMO
+    ================================= */
+
+    checkoutForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            if (!cart.length) {
+
+                messageElement.textContent =
+                    "Your bag is empty.";
+
+                return;
+
+            }
+
+
+            if (!checkoutForm.reportValidity()) {
+                return;
+            }
+
+
+            const formData =
+                new FormData(checkoutForm);
+
+            const order = {
+
+                orderId:
+                    "DRESIA-" +
+                    Date.now().toString().slice(-8),
+
+                customer: {
+
+                    name: formData.get("customerName"),
+
+                    phone: formData.get("phone"),
+
+                    email: formData.get("email"),
+
+                    district: formData.get("district"),
+
+                    address: formData.get("address"),
+
+                    note: formData.get("note")
+
+                },
+
+                payment:
+                    formData.get("payment"),
+
+                products:
+                    cart.map(item => ({
+
+                        id: item.id,
+
+                        name: item.name,
+
+                        price: Number(item.price),
+
+                        quantity: Number(item.quantity)
+
+                    })),
+
+                subtotal:
+                    getSubtotal(),
+
+                delivery:
+                    getDeliveryCharge(),
+
+                total:
+                    getTotal(),
+
+                currency:
+                    "BDT",
+
+                status:
+                    "Demo Order",
+
+                createdAt:
+                    new Date().toISOString()
+
+            };
+
+
+            /*
+              DEMO ONLY
+
+              This order is not sent to a server.
+              Do not collect real customer data
+              using this demo checkout.
+            */
+
+
+            messageElement.textContent =
+                "Demo Order Created! Order ID: " +
+                order.orderId +
+                ". No real order was submitted.";
+
+
+            console.log(
+                "DRESIA DEMO ORDER:",
+                order
+            );
+
+
+            /*
+              Clear cart for demo.
+              Remove these lines if you want
+              the cart to remain after checkout.
+            */
+
+            cart = [];
+
+            saveCart();
+
+            renderCheckout();
+
+            checkoutForm.reset();
+
+        }
+    );
+
+
+    /* =================================
+       8. FOOTER YEAR
+    ================================= */
+
+    document.getElementById(
+        "checkout-year"
+    ).textContent = new Date().getFullYear();
+
+
+    /* =================================
+       9. INITIAL RENDER
+    ================================= */
+
+    renderCheckout();
+
+
+})();
+
+</script>
+
+
+</body>
+</html>
